@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
-import vk, time, random
-import lec_01, Content
+import random
+import time
 
+import vk
+
+from Lessons import C1L1
+from Lessons.Contents import Content, ContentP2, ContentP3, ContentP4
 
 done = True
 session = vk.Session(access_token = "3562299b8bf6d97e594c6e932eadda39c8caa182959c116a59dd478c356b43db4e14e991ebd9e4ffdf6e2")
@@ -56,7 +60,10 @@ while done:
                 time.sleep(sleep)
         elif str(nui['body']).upper().__contains__('ДАВАЙ УЧИТЬ PYTHON'):
             try:
-                api.messages.send(user_id=nui['uid'], message='Какую главу будем зубрить? \n' + Content.__doc__ )
+                api.messages.send(user_id=nui['uid'], message = 'Какую главу будем зубрить? \n' + Content.__doc__)
+                api.messages.send(user_id=nui['uid'], message = ContentP2.__doc__)
+                api.messages.send(user_id=nui['uid'], message = ContentP3.__doc__)
+                api.messages.send(user_id=nui['uid'], message = ContentP4.__doc__)
                 time.sleep(sleep)
                 api.messages.markAsRead(message_ids=nui['mid'])
                 time.sleep(sleep)
@@ -65,7 +72,7 @@ while done:
                 time.sleep(sleep)
         elif str(nui['body']).upper().__contains__('ГЛАВА 1'):
             try:
-                api.messages.send(user_id=nui['uid'], message=lec_01.__doc__)
+                api.messages.send(user_id=nui['uid'], message=C1L1.__doc__)
                 time.sleep(sleep)
                 api.messages.markAsRead(message_ids=nui['mid'])
                 time.sleep(sleep)
