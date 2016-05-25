@@ -4,8 +4,9 @@ import time
 
 import vk
 
-from Lessons import C1L1
+from Lessons.Chapter_1 import C1L1
 from Lessons.Contents import Content, ContentP2, ContentP3, ContentP4
+from Lessons.Chapter_2 import C2L1, C2L1_2
 
 done = True
 session = vk.Session(access_token = "3562299b8bf6d97e594c6e932eadda39c8caa182959c116a59dd478c356b43db4e14e991ebd9e4ffdf6e2")
@@ -70,7 +71,7 @@ while done:
             except Exception:
                 api.messages.markAsRead(message_ids=nui['mid'])
                 time.sleep(sleep)
-        elif str(nui['body']).upper().__contains__('ГЛАВА 1'):
+        elif str(nui['body']).upper().__contains__('1.1'):
             try:
                 api.messages.send(user_id=nui['uid'], message=C1L1.__doc__)
                 time.sleep(sleep)
@@ -78,7 +79,17 @@ while done:
                 time.sleep(sleep)
             except Exception:
                 api.messages.markAsRead(message_ids=nui['mid'])
-                time.sleep(sleep)                
+                time.sleep(sleep)
+        elif str(nui['body']).upper().__contains__('2.1'):
+            try:
+                api.messages.send(user_id=nui['uid'], message=C2L1.__doc__)
+                api.messages.send(user_id=nui['uid'], message=C2L1_2.__doc__)
+                time.sleep(sleep)
+                api.messages.markAsRead(message_ids=nui['mid'])
+                time.sleep(sleep)
+            except Exception:
+                api.messages.markAsRead(message_ids=nui['mid'])
+                time.sleep(sleep)
         else:
             try:
                 api.messages.send(user_id=nui['uid'], message='Не понял')
