@@ -7,6 +7,7 @@ from Lessons.Chapter_2 import C2L1, C2L1_2, C2L1_3
 
 
 done = True
+history = open('history', '+')
 session = vk.Session(access_token = "3562299b8bf6d97e594c6e932eadda39c8caa182959c116a59dd478c356b43db4e14e991ebd9e4ffdf6e2")
 api = vk.API(session)
 sleep = 1.5
