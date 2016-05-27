@@ -6,9 +6,10 @@ from Lessons.Contents import Content, ContentP2, ContentP3, ContentP4
 from Lessons.Chapter_2 import C2L1, C2L1_2, C2L1_3
 
 
+
 done = True
-history = open('history', '+')
-session = vk.Session(access_token = "3562299b8bf6d97e594c6e932eadda39c8caa182959c116a59dd478c356b43db4e14e991ebd9e4ffdf6e2")
+history = open('history.txt', 'w')
+session = vk.Session(access_token = "3e39f64310d6265db34707e865e2f1de96e90830611ad9a4c0169b239c72af62ed01250a0012a1b9d3c28")
 api = vk.API(session)
 sleep = 1.5
 
@@ -33,6 +34,11 @@ while done:
             nui = i
 
     print(nui)
+
+    if str(datetime.datetime.now()).__contains__('01:42:00'):
+        api.messages.send(user_id=244728879, message="Го заниматься!")
+        time.sleep(sleep)
+
     if nui != {}:
         if str(nui['body']).upper().__contains__('ПРИВЕТ'):
             try:
@@ -56,15 +62,6 @@ while done:
             except Exception:
                 api.messages.send(user_id=nui['uid'], message='Ice')
                 time.sleep(sleep)
-                api.messages.markAsRead(message_ids=nui['mid'])
-                time.sleep(sleep)
-        elif str(datetime.datetime.now()).__contains__('15:00:00'):
-            try:
-                api.messages.send(user_id=nui['uid'], message="Го заниматься!")
-                time.sleep(sleep)
-                api.messages.markAsRead(message_ids=nui['mid'])
-                time.sleep(sleep)
-            except Exception:
                 api.messages.markAsRead(message_ids=nui['mid'])
                 time.sleep(sleep)
         elif str(nui['body']).upper().__contains__('ДАВАЙ УЧИТЬ PYTHON'):
