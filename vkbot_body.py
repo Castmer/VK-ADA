@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import vk, time, random
+import lec_01
+
 
 done = True
-session = vk.Session(access_token = "b7690ac26382a9b074c4eb953e39a9ef0fb42c0e441df4813046ce1fbbae4d209b55f0af0f895844e8a6d")
+session = vk.Session(access_token = "3562299b8bf6d97e594c6e932eadda39c8caa182959c116a59dd478c356b43db4e14e991ebd9e4ffdf6e2")
 api = vk.API(session)
 sleep = 1.5
 
@@ -39,7 +41,7 @@ while done:
                 time.sleep(sleep)
                 api.messages.markAsRead(message_ids=nui['mid'])
                 time.sleep(sleep)
-        if str(nui['body']).upper().__contains__('КАК ДЕЛА'):
+        elif str(nui['body']).upper().__contains__('КАК ДЕЛА'):
             try:
                 api.messages.send(user_id=nui['uid'], message= random.choice(['Норм', 'Прекрасно','Отлично','Все пучком','Лучше всех',
                                                                               'По тихой грусти', 'Всё ОК', 'Все хорошо', 'Ничего',
@@ -52,6 +54,24 @@ while done:
                 time.sleep(sleep)
                 api.messages.markAsRead(message_ids=nui['mid'])
                 time.sleep(sleep)
+        elif str(nui['body']).upper().__contains__('ДАВАЙ УЧИТЬ PYTHON'):
+            try:
+                api.messages.send(user_id=nui['uid'], message='Какую главу будем зубрить?')
+                time.sleep(sleep)
+                api.messages.markAsRead(message_ids=nui['mid'])
+                time.sleep(sleep)
+            except Exception:
+                api.messages.markAsRead(message_ids=nui['mid'])
+                time.sleep(sleep)
+        elif str(nui['body']).upper().__contains__('ГЛАВА 1'):
+            try:
+                api.messages.send(user_id=nui['uid'], message=lec_01.__doc__)
+                time.sleep(sleep)
+                api.messages.markAsRead(message_ids=nui['mid'])
+                time.sleep(sleep)
+            except Exception:
+                api.messages.markAsRead(message_ids=nui['mid'])
+                time.sleep(sleep)                
         else:
             try:
                 api.messages.send(user_id=nui['uid'], message='Не понял')
@@ -59,11 +79,13 @@ while done:
                 api.messages.markAsRead(message_ids=nui['mid'])
                 time.sleep(sleep)
             except Exception:
-                api.messages.send(user_id=nui['uid'], message='И что это')
+                api.messages.send(user_id=nui['uid'], message='И что это?')
                 time.sleep(sleep)
                 api.messages.markAsRead(message_ids=nui['mid'])
                 time.sleep(sleep)
-
+        
+                
+                
 
     
 
