@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import vk, time, random
-import lec_01
+import lec_01, Content
 
 
 done = True
@@ -56,7 +56,7 @@ while done:
                 time.sleep(sleep)
         elif str(nui['body']).upper().__contains__('ДАВАЙ УЧИТЬ PYTHON'):
             try:
-                api.messages.send(user_id=nui['uid'], message='Какую главу будем зубрить?')
+                api.messages.send(user_id=nui['uid'], message='Какую главу будем зубрить? \n' + Content.__doc__ )
                 time.sleep(sleep)
                 api.messages.markAsRead(message_ids=nui['mid'])
                 time.sleep(sleep)
