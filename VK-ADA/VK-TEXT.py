@@ -16,7 +16,7 @@ from Lessons.Yr import Top, Mid, Mda
 done = True
 history = open('history.txt', 'w')
 session = vk.Session(
-    access_token="3e39f64310d6265db34707e865e2f1de96e90830611ad9a4c0169b239c72af62ed01250a0012a1b9d3c28")
+    access_token="")
 api = vk.API(session)
 sleep = 1.5
 
